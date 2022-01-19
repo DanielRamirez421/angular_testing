@@ -18,7 +18,7 @@ export class MedicosComponent implements OnInit {
   constructor( public _medicoService: MedicosService ) { }
 
   ngOnInit() {
-    this._medicoService.getMedicos()
+    this._medicoService.getMedicals()
           .subscribe( (medical: any) => this.medicals = medical );
   }
 

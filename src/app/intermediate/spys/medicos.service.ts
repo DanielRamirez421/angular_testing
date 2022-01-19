@@ -7,7 +7,7 @@ export class MedicosService {
 
   constructor( public http: HttpClient ) { }
 
-  getMedicos() {
+  getMedicals() {
     return this.http.get('...').pipe(
       map( (resp: any) => resp['medicos'] )
     );
