@@ -3,7 +3,7 @@ import { MedicosService } from './medicos.service';
 import { MedicosComponent } from './medicos.component';
 import { of, throwError } from 'rxjs';
 
-describe('Description', () => {
+describe(`Spy's`, () => {
 
   let component: MedicosComponent;
   const service = new MedicosService({} as HttpClient);
@@ -37,6 +37,23 @@ describe('Description', () => {
     component.addMedical();
     expect(component.errorMsg).toBe(serviceError);
   });
+
+  it('Should call server to delete a medical', () => {
+    const call = spyOn(service, 'deleteMedical').and.returnValue(of());
+    const medicalIdToDelete = '1';
+    spyOn(window, 'confirm').and.returnValue(true);
+    component.deleteMedical(medicalIdToDelete);
+    expect(call).toHaveBeenCalledOnceWith(medicalIdToDelete);
+  });
+
+  it(`Shouldn't call server if user says not`, () => {
+    const call = spyOn(service, 'deleteMedical').and.returnValue(of());
+    const medicalIdToDelete = '1';
+    spyOn(window, 'confirm').and.returnValue(false);
+    component.deleteMedical(medicalIdToDelete);
+    expect(call).not.toHaveBeenCalledOnceWith(medicalIdToDelete);
+  });
+
 
 
 });
