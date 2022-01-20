@@ -19,6 +19,14 @@ describe('Medico Component', () => {
     component = fixture.componentInstance;
   });
 
+  it('Should create component', () => {
+    expect(component).toBeTruthy()
+  });
 
+  it('Should return medical name', () => {
+    const medicalName = 'Juan';
+    const greeting = component.sayHiMedical(medicalName);
+    expect(greeting).toContain(medicalName);
+  });
 
 });

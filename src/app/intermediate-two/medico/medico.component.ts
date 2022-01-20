@@ -12,4 +12,8 @@ export class MedicoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  sayHiMedical(name: string){
+    return `Hi ${ name }`;
+  }
+
 }
