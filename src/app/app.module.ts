@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MedicoComponent } from './intermediate-two/medico/medico.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MedicosComponent
+    MedicosComponent,
+    MedicoComponent
   ],
   imports: [
     BrowserModule,
