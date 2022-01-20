@@ -1,7 +1,7 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { MedicosService } from './medicos.service';
 import { MedicosComponent } from './medicos.component';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 describe('Description', () => {
 
@@ -14,7 +14,6 @@ describe('Description', () => {
   it('Should load the Medicals', () => {
     const fakeMedicals = ['DrOn', 'DrAndrew', 'DrDaniel'];
     spyOn( service, 'getMedicals').and.returnValue(of(fakeMedicals));
-
     component.ngOnInit();
     expect( component.medicals.length ).toBeGreaterThan(0);
   });
@@ -32,6 +31,12 @@ describe('Description', () => {
     expect(component.medicals.indexOf(medical)).toBeGreaterThanOrEqual(0);
   });
 
+  it('Should return error as Observable if AddMedical request fails ', () => {
+    const serviceError = 'AddMedical error!';
+    spyOn(service, 'addMedical').and.returnValue(throwError(() => serviceError));
+    component.addMedical();
+    expect(component.errorMsg).toBe(serviceError);
+  });
 
 
 });
