@@ -10,7 +10,9 @@ import { MedicosService } from './medicos.service';
   `,
   styles: []
 })
+
 export class MedicosComponent implements OnInit {
+
 
   public medicals: any[] = [];
   public errorMsg!: string;
