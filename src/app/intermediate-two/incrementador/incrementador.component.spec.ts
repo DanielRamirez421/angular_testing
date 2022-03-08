@@ -99,6 +99,32 @@ describe('Incremendator Component', () => {
 
 
 
+    it('Should decrement/increment 5 with a button eventNames', () => {
+
+      component.progreso = 90;
+      const botones = fixture.debugElement.queryAll( By.css('.btn-primary') );
+
+      botones[0].triggerEventHandler( 'click', null);
+      expect(component.progreso).toBe(85);
+
+      botones[1].triggerEventHandler( 'click', null);
+      expect(component.progreso).toBe(90);
+
+    });
+
+
+    it('Should progress to be 45 in HTML', () => {
+
+      const titleElement = fixture.debugElement.query( By.css('h3')).nativeElement;
+      const botones = fixture.debugElement.queryAll( By.css('.btn-primary') );
+      botones[0].triggerEventHandler( 'click', null);
+      fixture.detectChanges();
+
+      expect(titleElement.innerHTML).toContain('45');
+
+    });
+
+
 
 
 
