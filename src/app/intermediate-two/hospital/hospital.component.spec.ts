@@ -19,7 +19,7 @@ describe('HospitalComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the HospitalComponent', () => {
     expect(component).toBeTruthy();
   });
 });
